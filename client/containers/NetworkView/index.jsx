@@ -17,9 +17,9 @@ import style from './style.css'
 const muiTheme = getMuiTheme({
 
   appBar: {
-    color: teal600,
-    height: 40
-  },
+    color: teal600
+  }
+
 });
 
 
