@@ -27,15 +27,17 @@ class MainMenu extends Component {
           </h2>
           <Divider style={styles.divStyle}/>
           <ListItem
-            primaryText="Profile photo"
-            secondaryText="Change your Google+ profile photo"
+            primaryText="Network Name:"
+            secondaryText="Name of the network (if available)"
           />
           <ListItem
-            primaryText="Show your status"
-            secondaryText="Your status is visible to everyone you use with"
+            primaryText="Description"
+            secondaryText="Description of the network, dc:description?"
           />
         </List>
+
         <Divider />
+
         <List>
           <Subheader>Hangout Notifications</Subheader>
           <ListItem

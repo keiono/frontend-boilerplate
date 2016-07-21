@@ -6,6 +6,7 @@ import React from 'react'
 
 import App from './containers/App'
 import NetworkView from './containers/NetworkView'
+import Entrance from './containers/Entrance'
 
 import configure from './store'
 
@@ -24,6 +25,11 @@ ReactDOM.render(
       <Route
         path="/network"
         component={NetworkView}
+      />
+
+      <Route
+        path="/top"
+        component={Entrance}
       />
 
     </Router>
