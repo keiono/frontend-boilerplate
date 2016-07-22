@@ -1,6 +1,7 @@
 import React from "react"
 import cytoscape from "cytoscape"
 import {DEF_VISUAL_STYLE} from "./VisualStyle"
+import style from './style.css'
 
 // TODO: consolidate Cytoscape-dependent tags
 const CYTOSCAPE_TAG = 'cy';
@@ -11,15 +12,15 @@ const DEF_LAYOUT = 'preset';
 // Layout to be used when there is no layout information
 const DEF_NO_LAYOUT = 'cose';
 
-
-const style ={
-  height: '1000px',
-  width: '100%',
-  backgroundColor: '#EFEFEF'
+const CY_EVENTS = {
+  select: "select",
+  unselect: 'unselect',
+  add:'add',
+  remove: 'remove'
 }
 
 
-class CytoscapeRenderer extends React.Component {
+export default class CytoscapeRenderer extends React.Component {
 
   updateCyjs(networkData) {
     console.log('* Cytoscape.js is rendering new network...');
@@ -49,6 +50,8 @@ class CytoscapeRenderer extends React.Component {
           }
 
         }));
+
+    this.setEventListener()
   }
 
   componentDidMount() {
@@ -75,9 +78,29 @@ class CytoscapeRenderer extends React.Component {
   render() {
     console.log('rendering Cytoscape js network---')
     return (
-      <div id={CYTOSCAPE_TAG} style={style} />
+      <div id={CYTOSCAPE_TAG} className={style.cy} />
     )
   }
-}
 
-export default CytoscapeRenderer
+  setEventListener() {
+    this.cy.on('data select unselect add remove', ev => {
+      switch (ev.originalEvent.type) {
+        case CY_EVENTS.select:
+          let selected = ev.cyTarget;
+          this.handleSelect(selected)
+          break
+        case CY_EVENTS.unselect:
+          let unselected = ev.cyTarget;
+          this.handleSelect(unselected)
+          break
+        default:
+          break
+      }
+    })
+  }
+
+  handleSelect(selected) {
+    console.log('--------- selected')
+    console.log(selected)
+  }
+}

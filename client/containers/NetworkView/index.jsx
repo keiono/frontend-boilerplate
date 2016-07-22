@@ -5,8 +5,6 @@ import {connect} from 'react-redux'
 import NetworkViewer from '../../components/NetworkViewer'
 import {networkDownloadActions,networkActions} from 'cy-network-store'
 
-import * as CytoscapeActions from '../../actions/cytoscape'
-
 import {teal600} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -39,6 +37,7 @@ class NetworkView extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <NetworkViewer
+          className={style.main}
           networks={networks}
           networkDownload={networkDownload}
           networkActions={networkActions}
