@@ -4,26 +4,21 @@ import {List, ListItem} from 'material-ui/List';
 
 import Checkbox from 'material-ui/Checkbox';
 
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  divStyle: {
-    width: 500
-  }
-};
+import style from './style.css'
+
 
 class DataSource extends Component {
 
   render() {
     return (
-      <div style={styles.root}>
-        <img src="../../assets/images/cytoscape-logo-orange.svg" width="40px"/>
-        <h2>
-          Cytoscape.next
-        </h2>
+      <div>
 
+        <h1 className={style.title}>
+          Cytoscape.next
+        </h1>
+        <div className={style.logo}>
+          <img className={style.logo} src="../../assets/images/cytoscape-logo-orange.svg"/>
+        </div>
 
         <ListItem
           leftCheckbox={<Checkbox />}
@@ -41,10 +36,8 @@ class DataSource extends Component {
           secondaryText="Hangouts video call"
         />
       </div>
-
     )
   }
 }
-
 
 export default DataSource;

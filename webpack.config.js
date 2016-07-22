@@ -27,6 +27,10 @@ module.exports = {
         loader: 'file?name=[name].[ext]'
       },
       {
+        test: /\.svg$/,
+        loader: 'file-loader'
+      },
+      {
         test: /\.css$/,
         include: /client/,
         loaders: [

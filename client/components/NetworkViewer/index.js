@@ -10,6 +10,10 @@ import ShareDialog from '../ShareDialog'
 import StyleSelector from '../StyleSelector'
 
 
+
+console.log('!!!!!!!!!!!!+++++++ Comp')
+console.log(MainMenu)
+
 const iconStyle2 = {
   marginTop: 5,
   padding: 0,
@@ -35,7 +39,7 @@ const dStyle = {
 };
 
 
-class Header2 extends Component {
+class NetworkViewer extends Component {
 
   constructor(props) {
     super(props);
@@ -56,6 +60,11 @@ class Header2 extends Component {
   handleClose = () => this.setState({open: false});
 
   render() {
+
+    const {networks} = this.props
+    console.log('-----------p3')
+    console.log(networks)
+
     return (
 
       <div>
@@ -85,9 +94,9 @@ class Header2 extends Component {
 
         </AppBar>
 
-        <NetworkPanel />
-        <ShareDialog />
+        <NetworkPanel networks={networks}/>
 
+        <ShareDialog />
 
         <Drawer
           docked={false}
@@ -99,9 +108,8 @@ class Header2 extends Component {
           <MainMenu/>
         </Drawer>
       </div>
-
     )
   }
 }
 
-export default Header2
+export default NetworkViewer

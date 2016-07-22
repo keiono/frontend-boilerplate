@@ -1,19 +1,28 @@
 import React, {Component} from 'react'
-
-
-import {teal200, grey500, fullWhite} from 'material-ui/styles/colors'
-import {Tabs, Tab} from 'material-ui/Tabs';
-import FontIcon from 'material-ui/FontIcon';
-import ActionFlightTakeoff from 'material-ui/svg-icons/action/flight-takeoff';
-
+import CytoscapeRenderer from './CytoscapeRenderer'
 
 
 class NetworkPanel extends Component {
 
+  constructor(props, context) {
+    super(props, context)
+  }
+
+
+  componentWillMount() {
+    console.log('renderer---------------')
+    console.log(this.props)
+    this.props.downloadActions.downloadBegin()
+    this.props.downloadActions.download(this.props.networkUrl)
+  }
+
   render() {
+
+    console.log('renderer2---------------')
+    console.log(this.props)
     return (
       <div>
-        <h1>Network view here...</h1>
+        <h1>test</h1>
       </div>
     )
   }
