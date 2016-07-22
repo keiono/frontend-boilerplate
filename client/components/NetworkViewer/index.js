@@ -61,9 +61,13 @@ class NetworkViewer extends Component {
 
   render() {
 
-    const {networks} = this.props
-    console.log('-----------p3')
+    const { networks, networkDownload,
+      downloadActions, networkActions } = this.props
+    console.log('-----------p54')
+    console.log(this.props)
     console.log(networks)
+    console.log(networkDownload)
+    console.log(<this className="props"></this>)
 
     return (
 
@@ -94,7 +98,12 @@ class NetworkViewer extends Component {
 
         </AppBar>
 
-        <NetworkPanel networks={networks}/>
+        <NetworkPanel
+          networks={networks}
+          networkDownload={networkDownload}
+          networkActions={networkActions}
+          downloadActions={downloadActions}
+        />
 
         <ShareDialog />
 

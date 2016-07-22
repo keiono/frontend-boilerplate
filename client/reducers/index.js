@@ -1,6 +1,7 @@
 import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
 import todos from './todos'
+import currentNetwork from './currentnetwork'
 
 import {store as netStore} from 'cy-network-store'
 
@@ -15,6 +16,6 @@ const cy_network = combineReducers(netStore)
 export default combineReducers({
   routing,
   todos,
-  cy_network
-
-})
+  currentNetwork,
+  cy_network }
+  )

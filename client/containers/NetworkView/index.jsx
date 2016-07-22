@@ -21,7 +21,6 @@ const muiTheme = getMuiTheme({
   appBar: {
     color: teal600
   }
-
 });
 
 
@@ -34,11 +33,17 @@ class NetworkView extends Component {
 
     console.log("************** top level comp")
     console.log(this.props)
-    const { networks } = this.props
+    const { networks, networkDownload,
+      downloadActions, networkActions } = this.props
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <NetworkViewer networks={networks} />
+        <NetworkViewer
+          networks={networks}
+          networkDownload={networkDownload}
+          networkActions={networkActions}
+          downloadActions={downloadActions}
+        />
       </MuiThemeProvider>
     )
   }

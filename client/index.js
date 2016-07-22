@@ -26,7 +26,7 @@ const init2 = {
 }
 
 
-const store = configure(init2)
+const store = configure()
 
 
 const history = syncHistoryWithStore(browserHistory, store)

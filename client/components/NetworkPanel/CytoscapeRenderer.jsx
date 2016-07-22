@@ -12,12 +12,21 @@ const DEF_LAYOUT = 'preset';
 const DEF_NO_LAYOUT = 'cose';
 
 
+const style ={
+  height: '1000px',
+  width: '100%',
+  backgroundColor: '#EFEFEF'
+}
+
+
 class CytoscapeRenderer extends React.Component {
 
-  updateCyjs() {
+  updateCyjs(networkData) {
     console.log('* Cytoscape.js is rendering new network...');
+    console.log(networkData);
 
-    let network = this.props.networkData.toJS()
+    let network = networkData.toJS()
+    console.log(network)
 
     let visualStyle = DEF_VISUAL_STYLE
     let layout = DEF_LAYOUT
@@ -30,7 +39,7 @@ class CytoscapeRenderer extends React.Component {
 
     this.cy = cytoscape(
       Object.assign(
-        this.props.renderOptions,
+        // this.props.renderOptions,
         {
           container: document.getElementById(CYTOSCAPE_TAG),
           elements: network.elements,
@@ -43,23 +52,30 @@ class CytoscapeRenderer extends React.Component {
   }
 
   componentDidMount() {
-    this.updateCyjs();
+    console.log("=========== N!!!!!!!!!!! NIUNTO DATA");
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  componentWillReceiveProps(nextProps) {
+    console.log("*****Network prop changed, updating cytoscapejs")
+    console.log(nextProps)
+
+    if (nextProps === undefined || nextProps.networkData === undefined) {
+      console.log("=========== NO DATA");
+      return
+    }
+
     if (nextProps.networkData.equals(this.props.networkData)) {
       console.log("Network unchanged, not updating cytoscapejs");
-      return false;
+      return
+    } else {
+      this.updateCyjs(nextProps.networkData)
     }
-    console.log("Network changed, updating cytoscapejs")
-    return true;
   }
 
   render() {
+    console.log('rendering Cytoscape js network---')
     return (
-      <div class="network-widget" style={{height: '100%', width: '100%'}}>
-        <div id={CYTOSCAPE_TAG} style={{height: '100%', width: '100%'}}></div>
-      </div>
+      <div id={CYTOSCAPE_TAG} style={style} />
     )
   }
 }
