@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
+
 import NetworkViewer from '../../components/NetworkViewer'
 import {networkDownloadActions,networkActions} from 'cy-network-store'
 
@@ -15,6 +16,7 @@ import style from './style.css'
 
 // Theme settings
 const muiTheme = getMuiTheme({
+
 
   appBar: {
     color: teal600
