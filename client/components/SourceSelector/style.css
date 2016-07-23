@@ -2,7 +2,8 @@
     width: 100%;
     background-color: #3e5e60;
     margin-top: 1em;
-    padding: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .selectorBox {
