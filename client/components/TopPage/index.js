@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router'
+
 import classnames from 'classnames'
 
 import Popover from 'material-ui/Popover';
@@ -57,6 +59,8 @@ export default class TopPage extends Component {
 
   render() {
 
+    const { currentNetwork, networkSourceActions } = this.props
+
     return (
       <div className={style.top}>
 
@@ -66,7 +70,10 @@ export default class TopPage extends Component {
         >
         </AppBar>
 
-        <Title />
+        <Title
+          currentNetwork={currentNetwork}
+          networkSourceActions={networkSourceActions}
+        />
 
         <Popover
           style={menuStyle}

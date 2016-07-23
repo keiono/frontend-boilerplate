@@ -26,10 +26,7 @@ module.exports = {
         test: /\.html$/,
         loader: 'file?name=[name].[ext]'
       },
-      {
-        test: /\.svg$/,
-        loader: 'file-loader'
-      },
+      {test: /\.svg$/, loader: 'svg-url-loader'},
       {
         test: /\.css$/,
         include: /client/,

@@ -34,6 +34,7 @@
     "redux-actions": "^0.9.1",
     "rucksack-css": "^0.8.5",
     "style-loader": "^0.13.0",
+    "svg-url-loader": "^1.0.3",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.7.1"
@@ -43,7 +44,6 @@
     "cy-network-viewer": "^0.9.0",
     "immutable": "^3.8.1",
     "import": "0.0.6",
-    "material-design-icons": "^2.2.3",
     "material-ui": "^0.15.2",
     "react-tap-event-plugin": "^1.0.0",
     "redux-thunk": "^2.1.0"

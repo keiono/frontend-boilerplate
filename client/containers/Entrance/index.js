@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
+import * as networkSourceActions from '../../reducers/currentnetwork'
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import TopPage from '../../components/TopPage'
@@ -31,22 +33,32 @@ const muiTheme = getMuiTheme({
 });
 
 class Entrance extends Component {
+
   render() {
+    const { currentNetwork, networkSourceActions } = this.props
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <TopPage className={style.main} />
+        <TopPage
+          className={style.main}
+          currentNetwork={currentNetwork}
+          networkSourceActions={networkSourceActions}
+        />
       </MuiThemeProvider>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    currentNetwork: state.currentNetwork,
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-  return {}
+  return {
+    networkSourceActions: bindActionCreators(networkSourceActions, dispatch),
+  }
 }
 
 export default connect(

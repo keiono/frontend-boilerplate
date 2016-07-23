@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-
+import {Link} from 'react-router'
 import classnames from 'classnames'
 import TextField from 'material-ui/TextField'
 import FlatButton from 'material-ui/FlatButton';
@@ -40,45 +40,58 @@ export default class SourceSelector extends Component {
     console.log(event)
     console.log(value)
 
-      this.setState({
-        helperText: VALUES[value],
-        currentText: ''
-      })
+    this.setState({
+      helperText: VALUES[value],
+      currentText: ''
+    })
+  }
+
+  handleVisualize = event => {
+    console.log("Handling---------------------")
+    console.log(this.refs)
+    const node = this.refs.sourceUrl
+    const networkUrl = node.input.value.trim()
+    console.log(networkUrl)
+    this.props.networkSourceActions.setCurrentNetwork(networkUrl)
   }
 
   render() {
+    console.log("PROP ---------------------")
+    console.log(this.props)
+
     return (
       <div className={style.selectorMain}>
 
-          <RadioButtonGroup
-            className={style.selectorBox}
-            name="dataSourceType"
-            defaultSelected="ndex"
-            onChange={this.sourceTypeSelected}
-          >
-            <RadioButton
-              style={{ width: '7em' }}
-              value="ndex"
-              label="NDEx"
-              labelStyle={labelStyle}
-            />
-            <RadioButton
-              style={{ width: '7em'}}
-              value="url"
-              label="JSON"
-              labelStyle={labelStyle}
-            />
-            <RadioButton
-              style={{ width: '7em' }}
-              value="zipped"
-              label="Zip"
-              labelStyle={labelStyle}
-            />
-          </RadioButtonGroup>
+        <RadioButtonGroup
+          className={style.selectorBox}
+          name="dataSourceType"
+          defaultSelected="ndex"
+          onChange={this.sourceTypeSelected}
+        >
+          <RadioButton
+            style={{width: '7em'}}
+            value="ndex"
+            label="NDEx"
+            labelStyle={labelStyle}
+          />
+          <RadioButton
+            style={{width: '7em'}}
+            value="url"
+            label="JSON"
+            labelStyle={labelStyle}
+          />
+          <RadioButton
+            style={{width: '7em'}}
+            value="zipped"
+            label="Zip"
+            labelStyle={labelStyle}
+          />
+        </RadioButtonGroup>
 
         <div className={style.selectorBox}>
           <TextField
             className={style.bottom2}
+            ref='sourceUrl'
             inputStyle={{color: '#FFFFFF'}}
             hintText={this.state.helperText}
             hintStyle={{color: '#CCCCCC'}}
@@ -96,6 +109,7 @@ export default class SourceSelector extends Component {
             style={{marginLeft: '1em'}}
             backgroundColor={Colors.orange700}
             hoverColor={Colors.orange400}
+            onClick={this.handleVisualize}
           />
         </div>
 

@@ -8,6 +8,8 @@ import SourceSelector from '../SourceSelector'
 export default class Title extends Component {
 
   render() {
+    const { currentNetwork, networkSourceActions } = this.props
+
     return (
       <div className={classnames(style.title, style.grid)}>
 
@@ -32,7 +34,10 @@ export default class Title extends Component {
           </div>
 
           <div className={style.gridCell2}>
-            <SourceSelector />
+            <SourceSelector
+              currentNetwork={currentNetwork}
+              networkSourceActions={networkSourceActions}
+            />
           </div>
         </div>
       </div>
