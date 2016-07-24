@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import {Link} from 'react-router'
-import classnames from 'classnames'
+import { browserHistory } from 'react-router'
 import TextField from 'material-ui/TextField'
 import FlatButton from 'material-ui/FlatButton';
 
@@ -53,6 +52,7 @@ export default class SourceSelector extends Component {
     const networkUrl = node.input.value.trim()
     console.log(networkUrl)
     this.props.networkSourceActions.setCurrentNetwork(networkUrl)
+    browserHistory.push('/network')
   }
 
   render() {

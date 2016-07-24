@@ -27,8 +27,7 @@ const muiTheme = getMuiTheme({
     pickerHeaderColor: Colors.cyan500,
   },
   appBar: {
-    color: 'rgba(0,0,0,0.0)',
-    boxShadow: '0 0'
+    color: 'rgba(0,0,0,0.0)'
   }
 });
 

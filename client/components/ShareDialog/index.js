@@ -12,18 +12,30 @@ const style = {
 }
 
 
-class ShareDialog extends Component {
+export default class ShareDialog extends Component {
+  constructor(props) {
+    super(props);
+    console.log('-----------CONST######==========')
+    console.log(props)
 
-  state = {
-    open: true,
-  };
+  }
 
+  componentWillUpdate(nextProps, nextState) {
+    console.log('-----------Froparent==========')
+    console.log(this.props)
+    console.log(nextProps)
+    console.log(nextState)
+
+  }
 
   handleClose = () => {
-    this.setState({open: false});
-  };
+  }
 
   render() {
+
+    console.log('************dialog')
+    console.log(this.props)
+
     const actions = [
       <FlatButton
         label="Cancel"
@@ -34,7 +46,7 @@ class ShareDialog extends Component {
         icon={<ShareIcon />}
         label="Share"
         primary={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={this.props.onTouchTap}
       />
     ];
 
@@ -43,7 +55,7 @@ class ShareDialog extends Component {
         contentStyle={style}
         actions={actions}
         modal={false}
-        open={this.state.open}
+        open={this.props.open}
         onRequestClose={this.handleClose} >
 
         <img src="../../assets/images/cytoscape-logo-orange.svg" width="40px"/>
@@ -59,5 +71,3 @@ class ShareDialog extends Component {
     );
   }
 }
-
-export default ShareDialog

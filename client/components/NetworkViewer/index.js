@@ -43,7 +43,10 @@ class NetworkViewer extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {open: false, shareDialogOpen: false}
+    this.state = {
+      open: false,
+      shareDialogOpen: false
+    }
   }
 
   openMenu = () => this.setState({open: !this.state.open});
@@ -67,7 +70,6 @@ class NetworkViewer extends Component {
     console.log(this.props)
     console.log(networks)
     console.log(networkDownload)
-    console.log(<this className="props"></this>)
 
     return (
 
@@ -86,7 +88,9 @@ class NetworkViewer extends Component {
           }
         >
 
-          <StyleSelector />
+          <StyleSelector
+
+          />
 
           <IconButton
             style={iconStyle2}
@@ -105,7 +109,9 @@ class NetworkViewer extends Component {
           downloadActions={downloadActions}
         />
 
-        <ShareDialog />
+        <ShareDialog
+          onTouchTap={this.handleShareDialogOpen}
+          open={this.state.shareDialogOpen} />
 
         <Drawer
           docked={false}
