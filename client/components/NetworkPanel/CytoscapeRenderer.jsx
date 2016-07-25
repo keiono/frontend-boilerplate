@@ -67,12 +67,13 @@ export default class CytoscapeRenderer extends React.Component {
       return
     }
 
-    if (nextProps.networkData.equals(this.props.networkData)) {
-      console.log("Network unchanged, not updating cytoscapejs");
-      return
-    } else {
-      this.updateCyjs(nextProps.networkData)
-    }
+    this.updateCyjs(nextProps.networkData)
+    // if (nextProps.networkData.equals(this.props.networkData)) {
+    //   console.log("Network unchanged, not updating cytoscapejs");
+    //   return
+    // } else {
+    //   this.updateCyjs(nextProps.networkData)
+    // }
   }
 
   render() {

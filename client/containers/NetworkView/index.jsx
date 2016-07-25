@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import * as networkSourceActions from '../../reducers/currentnetwork'
 
 
 import NetworkViewer from '../../components/NetworkViewer'
@@ -34,7 +35,7 @@ class NetworkView extends Component {
     console.log("************** top level comp")
     console.log(this.props)
     const { networks, networkDownload,
-      downloadActions, networkActions } = this.props
+      downloadActions, networkActions, currentNetwork } = this.props
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
@@ -44,6 +45,7 @@ class NetworkView extends Component {
           networkDownload={networkDownload}
           networkActions={networkActions}
           downloadActions={downloadActions}
+          currentNetwork={currentNetwork}
         />
       </MuiThemeProvider>
     )
@@ -52,14 +54,17 @@ class NetworkView extends Component {
 function mapStateToProps(state) {
   return {
     networks: state.cy_network.networks,
-    networkDownload: state.cy_network.networkDownload
+    networkDownload: state.cy_network.networkDownload,
+    currentNetwork: state.currentNetwork,
   }
 }
 
 function mapDispatchToProps(dispatch) {
+
   return {
     downloadActions: bindActionCreators(networkDownloadActions, dispatch),
-    networkActions: bindActionCreators(networkActions, dispatch)
+    networkActions: bindActionCreators(networkActions, dispatch),
+    networkSourceActions: bindActionCreators(networkSourceActions, dispatch),
   }
 }
 
