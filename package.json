@@ -4,6 +4,7 @@
   "description": "New web version of Cytoscape",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -rf ./static/*",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
     "build": "NODE_ENV=production webpack --progress --colors"
@@ -23,6 +24,7 @@
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-react": "^5.2.2",
     "file-loader": "^0.8.5",
+    "image-webpack-loader": "^2.0.0",
     "postcss-loader": "^0.8.1",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
@@ -46,6 +48,7 @@
     "import": "0.0.6",
     "material-ui": "^0.15.2",
     "react-tap-event-plugin": "^1.0.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "url-loader": "^0.5.7"
   }
 }

@@ -15,15 +15,24 @@ const DEF_NO_LAYOUT = 'cose';
 const CY_EVENTS = {
   select: "select",
   unselect: 'unselect',
-  add:'add',
+  add: 'add',
   remove: 'remove'
 }
 
 
 export default class CytoscapeRenderer extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      rendered: false
+    }
+  }
+
   updateCyjs(networkData) {
-    console.log('* Cytoscape.js is rendering new network...');
+    console.log('* Cytoscape.js is rendering new network...')
+    this.state.rendered = true
+
     console.log(networkData);
 
     let network = networkData.toJS()
@@ -54,32 +63,37 @@ export default class CytoscapeRenderer extends React.Component {
     this.setEventListener()
   }
 
-  componentDidMount() {
-    console.log("=========== N!!!!!!!!!!! NIUNTO DATA");
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("$$$$$$$$$ Checking props")
+    if (nextProps.networkData === this.props.networkData) {
+      return false
+    }
+    console.log("********** UPDATE **********")
+    return true
   }
 
   componentWillReceiveProps(nextProps) {
     console.log("*****Network prop changed, updating cytoscapejs")
     console.log(nextProps)
+    console.log(this.props)
 
     if (nextProps === undefined || nextProps.networkData === undefined) {
       console.log("=========== NO DATA");
       return
     }
 
+    if (nextProps.networkData === this.props.networkData
+      && this.state.rendered === true) {
+      return
+    }
     this.updateCyjs(nextProps.networkData)
-    // if (nextProps.networkData.equals(this.props.networkData)) {
-    //   console.log("Network unchanged, not updating cytoscapejs");
-    //   return
-    // } else {
-    //   this.updateCyjs(nextProps.networkData)
-    // }
   }
 
   render() {
     console.log('rendering Cytoscape js network---')
     return (
-      <div id={CYTOSCAPE_TAG} className={style.cy} />
+      <div id={CYTOSCAPE_TAG} className={style.cy}/>
     )
   }
 

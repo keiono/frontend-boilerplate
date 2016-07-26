@@ -26,7 +26,6 @@ module.exports = {
         test: /\.html$/,
         loader: 'file?name=[name].[ext]'
       },
-      {test: /\.svg$/, loader: 'svg-url-loader'},
       {
         test: /\.css$/,
         include: /client/,
@@ -48,6 +47,10 @@ module.exports = {
           'react-hot',
           'babel-loader'
         ]
+      },
+      {
+        test: /\.(png|jpg|jpeg|svg)$/,
+        loader: 'url',
       },
     ],
   },

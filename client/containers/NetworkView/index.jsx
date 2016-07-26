@@ -7,7 +7,7 @@ import * as networkSourceActions from '../../reducers/currentnetwork'
 import NetworkViewer from '../../components/NetworkViewer'
 import {networkDownloadActions,networkActions} from 'cy-network-store'
 
-import {teal600} from 'material-ui/styles/colors';
+import {teal700} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -20,7 +20,7 @@ const muiTheme = getMuiTheme({
 
 
   appBar: {
-    color: teal600
+    color: teal700,
   }
 });
 

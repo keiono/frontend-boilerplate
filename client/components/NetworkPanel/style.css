@@ -5,4 +5,10 @@
     left: 0;
     top: 0;
     background-color: #EFEFEF;
+    z-index: 1;
+}
+
+.buttons {
+    z-index: 999;
+    background-color: #00ccff;
 }

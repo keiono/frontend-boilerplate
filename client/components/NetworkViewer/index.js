@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 import AppBar from 'material-ui/AppBar'
+import  {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar'
 import Drawer from 'material-ui/Drawer'
 import MainMenu from '../MainMenu'
 import IconButton from 'material-ui/IconButton';
@@ -9,37 +10,26 @@ import NetworkPanel from '../NetworkPanel'
 import ShareDialog from '../ShareDialog'
 import StyleSelector from '../StyleSelector'
 
+import logo from '../../assets/images/cytoscape-logo-white.svg'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/maps/zoom-out-map'
+import style from './style.css'
 
+import Commands from '../Commands'
 
-console.log('!!!!!!!!!!!!+++++++ Comp')
-console.log(MainMenu)
-
-const iconStyle2 = {
-  marginTop: 5,
-  padding: 0,
-  width: 43,
-  height: 43,
-  color: "#FFFFFF"
-}
-
-const iconStyle = {
-  margin: 0,
-  width: 40,
-  height: 40
-}
-
-
-const style = {
-  margine: 0,
-  padding: 0
-};
 
 const dStyle = {
   padding: 10,
 };
 
 
-class NetworkViewer extends Component {
+const iconStyle = {
+  width: 40,
+  height: 40
+}
+
+
+export default class NetworkViewer extends Component {
 
   constructor(props) {
     super(props);
@@ -56,7 +46,7 @@ class NetworkViewer extends Component {
   }
 
   handleShareDialogOpen = () => {
-    this.setState({ shareDialogOpen: !this.state.shareDialogOpen })
+    this.setState({shareDialogOpen: !this.state.shareDialogOpen})
     console.log('Dialog state: ' + this.state.shareDialogOpen)
   };
 
@@ -64,43 +54,30 @@ class NetworkViewer extends Component {
 
   render() {
 
-    const { networks, networkDownload,
-      downloadActions, networkActions, currentNetwork } = this.props
+    const {
+      networks, networkDownload,
+      downloadActions, networkActions, currentNetwork
+    } = this.props
     console.log('-----------p54')
     console.log(this.props)
-    console.log(networks)
-    console.log(networkDownload)
 
     return (
 
       <div>
         <AppBar
-          title="C4"
-          iconElementLeft={
+          title={'Data Source: ' + currentNetwork.get('url')}
+          onLeftIconButtonTouchTap={this.openMenu}
+
+          iconElementRight={
             <IconButton
-              style={style}
-              iconStyle={iconStyle}
-              onTouchTap={this.openMenu}
-              disableTouchRipple={true}
+              onTouchTap={this.handleShareDialogOpen}
             >
-            <img src="../../assets/images/cytoscape-logo-white.svg"/>
-          </IconButton>
+              <ShareIcon />
+            </IconButton>
           }
         >
-
-          <StyleSelector
-
-          />
-
-          <IconButton
-            style={iconStyle2}
-            iconStyle={iconStyle2}
-            onTouchTap={this.handleShareDialogOpen}
-          >
-            <ShareIcon/>
-          </IconButton>
-
         </AppBar>
+
 
         <NetworkPanel
           networks={networks}
@@ -110,9 +87,12 @@ class NetworkViewer extends Component {
           currentNetwork={currentNetwork}
         />
 
+        <Commands/>
+
+
         <ShareDialog
           onTouchTap={this.handleShareDialogOpen}
-          open={this.state.shareDialogOpen} />
+          open={this.state.shareDialogOpen}/>
 
         <Drawer
           docked={false}
@@ -121,11 +101,18 @@ class NetworkViewer extends Component {
           style={dStyle}
           width={400}
         >
-          <MainMenu/>
+          <MainMenu
+            networks={networks}
+            currentNetwork={currentNetwork}
+          />
+        </Drawer>
+
+        <Drawer width={300} openSecondary={true} open={false}>
+          <Toolbar>
+            <ToolbarTitle text="Properties" />
+          </Toolbar>
         </Drawer>
       </div>
     )
   }
 }
-
-export default NetworkViewer

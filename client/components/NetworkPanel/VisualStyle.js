@@ -2,10 +2,13 @@ export const DEF_VISUAL_STYLE = [
   {
     selector: 'node',
     style: {
-      'background-color': '#436EEE',
+      'background-color': '#CCCCCC',
       'background-opacity': 0.9,
-      'width': '40px',
-      'height': '40px',
+      'width': '20px',
+      'height': '20px',
+      'font-size': '0.5em',
+      'text-halign': 'right',
+      'text-valign': 'bottom',
       'label': 'data(name)',
       'font-family': 'Roboto, sans-serif'
     }
@@ -16,9 +19,9 @@ export const DEF_VISUAL_STYLE = [
       'line-color': '#aaaaaa',
       'width': 1,
       'label': 'data(interaction)',
-      'font-size': '0.15em',
+      'font-size': '0.11em',
       'font-family': 'Roboto, sans-serif',
-      'text-opacity': 0.5
+      'text-opacity': 0.3
     }
   },
   {

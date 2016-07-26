@@ -1,3 +1,7 @@
+/**
+ * Created by kono on 2016/07/25.
+ */
+
 import React, {Component} from 'react'
 import { browserHistory } from 'react-router'
 import {List, ListItem} from 'material-ui/List';
@@ -25,7 +29,7 @@ import logo from '../../assets/images/cytoscape-logo-orange.svg'
 import Toggle from 'material-ui/Toggle';
 
 
-export default class MainMenu extends Component {
+export default class Properties extends Component {
 
 
   handleHome = event => {
@@ -141,12 +145,9 @@ export default class MainMenu extends Component {
           <ListItem
             primaryText="Help"
             leftIcon={<HelpIcon />}
-          />
-          <ListItem
-            primaryText="Back to home"
-            leftIcon={<HomeIcon />}
             onTouchTap={this.handleHome}
           />
+          <ListItem primaryText="Back to home" leftIcon={<HomeIcon />}/>
         </List>
       </div>
 

@@ -1,17 +1,11 @@
 import React, {Component} from 'react'
 import CytoscapeRenderer from './CytoscapeRenderer'
+import Loading from '../Loading'
 
+
+import style from './style.css'
 
 export default class NetworkPanel extends Component {
-
-  componentDidMount() {
-    console.log('renderer---------------')
-    console.log(this.props)
-
-    // const url = this.props.currentNetwork.get('url')
-    // this.props.downloadActions.downloadBegin()
-    // this.props.downloadActions.download(this.props.currentNetwork.get('url'))
-  }
 
   componentWillMount() {
     console.log('WILL mount####   renderer---------------')
@@ -26,34 +20,27 @@ export default class NetworkPanel extends Component {
 
     console.log(url)
     console.log(newUrl)
-    if (url === '' ||  url !== newUrl) {
+    if (url === '' || url !== newUrl) {
       this.props.downloadActions.downloadBegin()
       this.props.downloadActions.download(url)
     }
   }
 
-  shouldComponentUpdate() {
-    return true;
-  }
-
-  getInitialSate() {
-    console.log('DOWNLOAD: renderer---------------')
-
-  }
-
 
   render() {
-    console.log('called: renderer2222---------------')
+    console.log('called: VIewer renderer---------------')
     const url = this.props.currentNetwork.get('url')
     const network = this.props.networks.get(url)
     console.log(network)
 
     if (network !== undefined) {
       return (
-        <CytoscapeRenderer networkData={network}/>
+        <CytoscapeRenderer style={{zIndex: 1}} networkData={network}/>
       )
     } else {
-      return (<div />)
+      return (
+        <Loading />
+      )
     }
   }
 }

@@ -10,7 +10,7 @@ const items = [
 
 
 const style = {
-  color: '#FFFFFF',
+  color: '#777777',
   fontWeight: 400
 }
 
@@ -30,8 +30,8 @@ class StyleSelector extends Component {
           labelStyle={style}
           value={this.state.value}
           onChange={this.handleChange}
-          floatingLabelText="Visual Style"
-          floatingLabelStyle={{color: 'white'}}
+          floatingLabelText="Current Visual Style"
+          floatingLabelStyle={{color: '#777777', fontWeight:300}}
         >
           {items}
         </SelectField>

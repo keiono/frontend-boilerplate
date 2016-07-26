@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import style from './style.css'
 import SourceSelector from '../SourceSelector'
 
+import logo from '../../assets/images/cytoscape-logo-white.svg'
 
 export default class Title extends Component {
 
@@ -18,7 +19,7 @@ export default class Title extends Component {
           <div>
             <img
               className={classnames(style.logo)}
-              src="../../assets/images/cytoscape-logo-white.svg"
+              src={logo}
               alt="Cytoscape Logo"
             />
           </div>
